@@ -19,6 +19,7 @@ class Login extends React.Component {
   };
 
   //makes request to api/login, sends object of username / password (this.state.credentials)
+  //gets token and saves in localstorage
   login = e => {
     e.preventDefault();
     // axiosWithAuth ==> ?? an axios instance; .post() ==> ?? promise
@@ -28,6 +29,7 @@ class Login extends React.Component {
           console.log(res.data)
         localStorage.setItem('token', res.data.payload);
         // redirect to the apps main page?
+        //Route component - props.history
         this.props.history.push('/protected');
       })
       .catch(err => console.log(err));

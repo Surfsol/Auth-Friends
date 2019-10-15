@@ -17,8 +17,9 @@ function App() {
             <Link to="/protected">Protected Page</Link>
           </li>
         </ul>
+        {/* switch, can use without exact */}
         <Switch>
-          <PrivateRoute exact path="/protected" component={Friends} />
+          <PrivateRoute path="/protected" component={Friends} />
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>

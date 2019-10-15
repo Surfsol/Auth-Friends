@@ -5,6 +5,7 @@ import axios from 'axios';
 // - headers object -> authorization header with the token
 // before login send authorization and get token
 
+//different things can pass in axios.create - look on axios github
 export const axiosWithAuth = () => {
   //get token from local storage
   const token = localStorage.getItem('token');
