@@ -1,8 +1,9 @@
 import React from 'react';
 //import moment from 'moment';
-import Loader from 'react-loader-spinner';
-
+//import Loader from 'react-loader-spinner';
+//import AddFriend from './AddFriend'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import AddFriend from './AddFriend';
 
 class Friends extends React.Component {
   state = {
@@ -45,9 +46,10 @@ class Friends extends React.Component {
     console.log(friend);
     return (
       <div>
+        <AddFriend friend={this.state.friends}/>
         {friend.map(f =>(
         <>
-        <h3>Name:{f.id}</h3>
+        <h3>Name:{f.name}</h3>
         <h4>Age:{f.age}</h4>
         <h4>Email:{f.email}</h4>
         </>
