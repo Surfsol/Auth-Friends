@@ -6,7 +6,7 @@ const AddFriend = props => {
     console.log(`add`, props)
     //useState hook in browser
       const[friend, setFriend] = useState({id:"", name:"", age:"", email:""})
-    
+      const[loading, setLoad] = useState(false)
 
     //   useEffect(() => {
     //     axiosWithAuth()
@@ -32,6 +32,10 @@ const AddFriend = props => {
 
       const logValues = event => {
         event.preventDefault();
+        setLoad({loading:true})
+        setTimeout(() =>{
+            setLoad({loading:false})
+        }, 2000)
         setFriend({
           id:Math.random(),
           name: "",
@@ -41,6 +45,7 @@ const AddFriend = props => {
         postFriends();
       };
 
+     
       
 
     return (
@@ -77,7 +82,15 @@ const AddFriend = props => {
           placeholder="email"
         />
         </label>
-        <button onClick={logValues}> Add Friend</button>
+        <button onClick={logValues}>
+            { loading && (
+            <i className="fa fa-refresh fa-spin"
+              style={{ marginRight: "5px" }}
+              />
+            )} 
+            {loading && <span>Loading Friend to Server</span>}
+            {!loading && <span>Add New Friend</span>}
+        </button>
       </form>
     );
   }

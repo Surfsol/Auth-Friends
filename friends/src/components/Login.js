@@ -30,7 +30,7 @@ class Login extends React.Component {
         localStorage.setItem('token', res.data.payload);
         // redirect to the apps main page?
         //Route component - props.history
-        this.props.history.push('/protected');
+        this.props.history.push('/friend');
       })
       .catch(err => console.log(err));
   };

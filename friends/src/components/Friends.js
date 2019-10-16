@@ -7,12 +7,14 @@ import AddFriend from './AddFriend';
 
 class Friends extends React.Component {
   state = {
-    friends: []
+    friends: [],
   };
   //when component mounts invoke getData()
   componentDidMount() {
     this.getFriends();
   }
+
+ 
 
   //get, then setState , filter price
   getFriends = () => {
@@ -27,23 +29,25 @@ class Friends extends React.Component {
       .catch(err => console.log(err));
   };
 
-  formatData = () => {
-    const formattedData = [];
-    console.log(this.state.friends);
-    this.state.friends.forEach((person) => {
-        formattedData.push({
-          id: person.id,
-          name: person.name,
-          age: person.age,
-          email: person.email
-        });
-    });
-    return formattedData;
-  };
+  // formatData = () => {
+  //   const formattedData = [];
+  //   console.log(`this.state.friends`, this.state.friends);
+  //   this.state.friends.forEach((person) => {
+  //       formattedData.push({
+  //         id: person.id,
+  //         name: person.name,
+  //         age: person.age,
+  //         email: person.email
+  //       });
+  //   });
+  //   return formattedData;
+  // };
 
   render() {
-    const friend = this.formatData();
-    console.log(friend);
+    //const friend = this.formatData();
+    //console.log(`formatData`, friend);
+    console.log(`friends state`, this.state.friends)
+    const friend = this.state.friends
     return (
       <div>
         {friend.map(f =>(
