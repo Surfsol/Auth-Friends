@@ -4,32 +4,29 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const AddFriend = props => {
     console.log(`add`, props)
+    //useState hook in browser
       const[friend, setFriend] = useState({id:"", name:"", age:"", email:""})
     
 
-      useEffect(() => {
-        axiosWithAuth()
-          .get(
-            "/friends"
-          )
-          .then(res => setFriend(res.data))
-          .catch(err => console.log(err));
-      }, []);
+    //   useEffect(() => {
+    //     axiosWithAuth()
+    //       .get(
+    //         "/friends"
+    //       )
+    //       .then(res => setFriend(res.data))
+    //       .catch(err => console.log(err));
+    //   }, []);
 
       const handleChanges = e =>{
           //name and value from input fields, sets key: value pairs
+          //track changes in forms and updates
         setFriend({...friend, [e.target.name]: e.target.value})
       }
 
      const postFriends = () => {
         axiosWithAuth()
-          .post('/friends', friend)
-           .then(res => {
-                this.setState({
-              friends: res.data
-              }
-            );
-          })
+          .post('/friends', friend) //update added friend 
+           .then(res => console.log(res.data))
           .catch(err => console.log(err));
       };
 
